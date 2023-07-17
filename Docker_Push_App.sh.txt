@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Prompt the user to enter their Docker credentials
+DOCKER_USERNAME=$(zenity --entry --text="Enter your Docker username" --title="Docker Login")
+DOCKER_PASSWORD=$(zenity --password --text="Enter your Docker password" --title="Docker Login")
+
+# Build the Docker image
+DOCKER_IMAGE_NAME=$(zenity --entry --text="Enter a name for your Docker image" --title="Docker Build")
+DOCKERFILE=$(zenity --file-selection --title="Select Dockerfile")
+docker build -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME -f $DOCKERFILE .
+
+# Push the Docker image to the user's Docker account
+docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME
+
+# Display a success message
+zenity --info --text="Docker image successfully built and pushed to $DOCKER_USERNAME/$DOCKER_IMAGE_NAME" --title="Success"
+
