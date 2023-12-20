@@ -12,7 +12,7 @@ sudo apt-get install zenity</p>
 
 <h2> Usage</h2>
 <p>Clone this repository to your local machine:<br>
- - git clone https://github.com/your-username/docker-app-zenity.git <br>
+ - git clone https://github.com/Amolkadwe/Docker-app-Zenity.git <br>
 - cd docker-app-zenity</p>
 
 <p>Make the script executable:<br>
